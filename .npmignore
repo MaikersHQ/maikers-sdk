@@ -1,0 +1,28 @@
+# Source files
+src/
+examples/
+tests/
+
+# Configuration files
+.eslintrc.json
+.prettierrc
+.lintstagedrc
+.husky/
+.github/
+.vscode/
+.editorconfig
+.gitignore
+.env
+.env.*
+tsconfig.json
+tsup.config.ts
+typedoc.json
+jest.config.js
+eslint.config.js
+
+# Build artifacts
+coverage/
+docs/
+*.log
+.DS_Store
+Thumbs.db 
