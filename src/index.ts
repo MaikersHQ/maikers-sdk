@@ -1,3 +1,4 @@
+import { ApiClient, KeyApi } from './api/index.js';
 import { SDKOptions } from './types/index.js';
 
 /**
@@ -6,6 +7,8 @@ import { SDKOptions } from './types/index.js';
 export class MLioSDK {
   /** API client */
   private client: ApiClient;
+  /** Key API */
+  public key: KeyApi;
 
   /**
    * Create a new ML.io SDK instance
@@ -20,5 +23,8 @@ export class MLioSDK {
 
     // Create API client
     this.client = new ApiClient(baseUrl, apiKey);
+
+    // Initialize API modules
+    this.key = new KeyApi(this.client);
   }
 }
