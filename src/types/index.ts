@@ -9,6 +9,32 @@ export interface SDKOptions {
 }
 
 /**
+ * Account creation parameters
+ */
+export interface KeyCreateParams {
+  /** Solana wallet address */
+  walletAddress: string;
+  /** Signature from the wallet's private key */
+  signature: string;
+  /** Solana NFT mint address */
+  nftMint: string;
+  /** Message signed */
+  message: string;
+}
+
+/**
+ * Account response from the API
+ */
+export interface KeyCreateResponse {
+  /** Solana wallet address */
+  walletAddress: string;
+  /** Solana NFT mint address */
+  nftMint: string;
+  /** API key */
+  apiKey: string;
+}
+
+/**
  * API error response
  */
 export interface ApiError {
