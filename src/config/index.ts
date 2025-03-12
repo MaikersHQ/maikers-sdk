@@ -13,7 +13,7 @@ type ConfigValue = string | number | undefined;
  */
 const DEFAULT_CONFIG = {
   apiKey: '',
-  baseUrl: 'https://api.mlio.example.com/v1', // TODO:Replace with actual API URL
+  baseUrl: 'https://api.mlio.ai',
   authTimestamp: 0, // Add timestamp field
 };
 

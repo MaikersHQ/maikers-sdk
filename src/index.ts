@@ -2,9 +2,9 @@ import { ConfigManager } from './config/index.js';
 import { SDKOptions } from './types/index.js';
 
 /**
- * ML.io SDK for interacting with the ML.io API
+ * Maikers SDK for interacting with the Maikers API
  */
-export class MLioSDK {
+export class MaikersSDK {
   /** API client */
   private client: ApiClient;
   /** Configuration manager */
@@ -13,7 +13,7 @@ export class MLioSDK {
   public key: KeyApi;
 
   /**
-   * Create a new ML.io SDK instance
+   * Create a new Maikers SDK instance
    * @param options - SDK options
    */
   constructor(options: SDKOptions) {

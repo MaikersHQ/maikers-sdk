@@ -1,12 +1,12 @@
 import { Command } from 'commander';
 import { ConfigManager } from '../config/index.js';
-import { MLioSDK } from '../index.js';
+import { MaikersSDK } from '../index.js';
 /**
  * CLI for the ML.io SDK
  */
 export class CLI {
   private program: Command;
-  private sdk: MLioSDK;
+  private sdk: MaikersSDK;
   private config: ConfigManager;
 
   /**
@@ -14,9 +14,9 @@ export class CLI {
    */
   constructor() {
     this.config = new ConfigManager();
-    this.sdk = new MLioSDK({
+    this.sdk = new MaikersSDK({
       apiKey: process.env.MAIKERS_API_KEY,
-      baseUrl: process.env.MAIKERS_BASE_URL || 'https://api.ml.io',
+      baseUrl: process.env.MAIKERS_BASE_URL || 'https://api.mlio.ai',
     });
     this.program = new Command();
 
@@ -27,7 +27,7 @@ export class CLI {
    * Set up the CLI program
    */
   private setupProgram(): void {
-    this.program.name('mlio').description('MLiO SDK CLI').version('1.0.0');
+    this.program.name('maikers').description('Maikers SDK CLI').version('1.0.0');
 
     this.setupAuthCommands();
   }
@@ -36,7 +36,9 @@ export class CLI {
    * Set up authentication commands
    */
   private setupAuthCommands(): void {
-    const authCommand = this.program.command('auth').description('Authenticate with the ML.io API');
+    const authCommand = this.program
+      .command('auth')
+      .description('Authenticate with the MaiKERS API');
 
     authCommand
       .command('login')
