@@ -45,3 +45,20 @@ export interface ApiError {
   /** Additional error details */
   details?: Record<string, unknown>;
 }
+
+/**
+ * Job response from the API
+ */
+export interface Job {
+  id: string;
+  jobId: string;
+  status: string;
+  priority: string;
+  earnings: string;
+  earningsToken: string;
+  earningsMint: string;
+  rating: string;
+  feedback: string;
+  createdAt: string;
+  updatedAt: string;
+}

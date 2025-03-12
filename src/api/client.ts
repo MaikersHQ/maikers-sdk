@@ -66,12 +66,37 @@ export class ApiClient {
   }
 
   /**
+   * Check if the client is authenticated
+   * @returns True if authenticated, false otherwise
+   * @private
+   */
+  private isAuthenticated(): boolean {
+    return !!this.apiKey;
+  }
+
+  /**
+   * Ensure the client is authenticated before making a request
+   * @throws {ApiError} If not authenticated
+   * @private
+   */
+  private ensureAuthenticated(): void {
+    if (!this.isAuthenticated()) {
+      const apiError: ApiError = {
+        code: 'AUTHENTICATION_REQUIRED',
+        message: 'Authentication required. Please set an API key using the auth command.',
+      };
+      throw apiError;
+    }
+  }
+
+  /**
    * Make a GET request
    * @param url - Request URL
    * @param config - Axios request config
    * @returns Promise with the response data
    */
   public async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    this.ensureAuthenticated();
     const response: AxiosResponse<T> = await this.client.get(url, config);
     return response.data;
   }
@@ -84,6 +109,7 @@ export class ApiClient {
    * @returns Promise with the response data
    */
   public async post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+    this.ensureAuthenticated();
     const response: AxiosResponse<T> = await this.client.post(url, data, config);
     return response.data;
   }
@@ -96,6 +122,7 @@ export class ApiClient {
    * @returns Promise with the response data
    */
   public async put<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+    this.ensureAuthenticated();
     const response: AxiosResponse<T> = await this.client.put(url, data, config);
     return response.data;
   }
@@ -108,6 +135,7 @@ export class ApiClient {
    * @returns Promise with the response data
    */
   public async patch<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
+    this.ensureAuthenticated();
     const response: AxiosResponse<T> = await this.client.patch(url, data, config);
     return response.data;
   }
@@ -119,6 +147,7 @@ export class ApiClient {
    * @returns Promise with the response data
    */
   public async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    this.ensureAuthenticated();
     const response: AxiosResponse<T> = await this.client.delete(url, config);
     return response.data;
   }

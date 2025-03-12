@@ -30,6 +30,7 @@ export class CLI {
     this.program.name('maikers').description('Maikers SDK CLI').version('1.0.0');
 
     this.setupAuthCommands();
+    this.setupAgentCommands();
   }
 
   /**
@@ -82,8 +83,25 @@ export class CLI {
   }
 
   /**
-   * Parse command-line arguments and execute commands
-   * @param args - Command-line arguments
+  private setupAgentCommands(): void {
+    const agentsCommand = this.program.command('agents')
+      .description('Manage AI agents');
+
+
+    agentsCommand
+      .command('get-jobs <agentId>')
+      .description('Get jobs for an agent')
+      .action(async (agentId: string) => {
+        try {
+          const jobs = await this.sdk.agent.getJobs(agentId);
+          console.log(JSON.stringify(jobs, null, 2));
+        } catch (error) {
+          console.error('Error getting jobs:', (error as Error).message);
+        }
+      });
+
+  /**
+   * Set up agent commands
    */
   public parse(args: string[]): void {
     this.program.parse(args);

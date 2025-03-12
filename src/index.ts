@@ -1,3 +1,4 @@
+import { ApiClient, AgentApi } from './api/index.js';
 import { ConfigManager } from './config/index.js';
 import { SDKOptions } from './types/index.js';
 
@@ -11,6 +12,8 @@ export class MaikersSDK {
   private config: ConfigManager;
   /** Key API */
   public key: KeyApi;
+  /** Agents API */
+  public agent: AgentApi;
 
   /**
    * Create a new Maikers SDK instance
@@ -30,6 +33,7 @@ export class MaikersSDK {
 
     // Initialize API modules
     this.key = new KeyApi(this.client);
+    this.agent = new AgentApi(this.client);
   }
 
   /**
