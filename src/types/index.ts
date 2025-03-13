@@ -35,6 +35,31 @@ export interface KeyCreateResponse {
 }
 
 /**
+ * Risk level for AI agent
+ */
+export type RiskLevel = 'low' | 'medium' | 'high';
+
+/**
+ * Agent settings update parameters
+ */
+export interface UpdateAgentSettingsParams {
+  /** Name of the agent */
+  name: string;
+  /** Description of the agent */
+  description: string;
+  /** Risk level of the agent */
+  riskLevel: RiskLevel;
+  /** Job types the agent can handle */
+  jobTypes: string[];
+  /** Skills the agent can handle */
+  skills: string[];
+  /** Whether to automatically enable new job types */
+  autoEnableNewJobTypes: boolean;
+  /** Whether to automatically enable new skills */
+  autoEnableNewSkills: boolean;
+}
+
+/**
  * API error response
  */
 export interface ApiError {
