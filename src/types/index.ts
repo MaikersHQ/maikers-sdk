@@ -60,6 +60,28 @@ export interface UpdateAgentSettingsParams {
 }
 
 /**
+ * Agent response from the API
+ */
+export interface Agent {
+  /** Unique agent ID */
+  id: string;
+  /** Solana wallet address of the owner */
+  walletAddress: string;
+  /** Solana NFT mint address */
+  nftMint: string;
+  /** Agent persona description */
+  persona: string;
+  /** Allowed risk levels */
+  risks: RiskLevel[];
+  /** Additional configuration */
+  config: Record<string, unknown>;
+  /** Creation timestamp */
+  createdAt: string;
+  /** Last update timestamp */
+  updatedAt: string;
+}
+
+/**
  * API error response
  */
 export interface ApiError {
