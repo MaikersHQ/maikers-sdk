@@ -1,5 +1,5 @@
 import { ApiClient } from './client.js';
-import { Job } from '../types/index.js';
+import { UpdateAgentSettingsParams, Job } from '../types/index.js';
 
 /**
  * Agents API for managing AI agents
@@ -22,5 +22,16 @@ export class AgentApi {
    */
   public async getJobs(agentId: string): Promise<Job[]> {
     return this.client.get<Job[]>(`/agents/${agentId}/jobs`);
+  }
+
+  /**
+   * Update agent settings
+   * @param agentId - Agent ID
+   * @param params - Agent settings update parameters
+   * @returns Promise with the updated agent
+   */
+
+  public async updateSettings(agentId: string, params: UpdateAgentSettingsParams): Promise<Agent> {
+    return this.client.put<Agent>(`/agents/${agentId}/settings`, params);
   }
 }

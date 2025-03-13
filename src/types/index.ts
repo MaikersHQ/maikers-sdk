@@ -44,19 +44,19 @@ export type RiskLevel = 'low' | 'medium' | 'high';
  */
 export interface UpdateAgentSettingsParams {
   /** Name of the agent */
-  name: string;
+  name?: string;
   /** Description of the agent */
-  description: string;
+  description?: string;
   /** Risk level of the agent */
-  riskLevel: RiskLevel;
+  riskLevel?: RiskLevel;
   /** Job types the agent can handle */
-  jobTypes: string[];
+  jobTypes?: string[];
   /** Skills the agent can handle */
-  skills: string[];
+  skills?: string[];
   /** Whether to automatically enable new job types */
-  autoEnableNewJobTypes: boolean;
+  autoEnableNewJobTypes?: boolean;
   /** Whether to automatically enable new skills */
-  autoEnableNewSkills: boolean;
+  autoEnableNewSkills?: boolean;
 }
 
 /**
