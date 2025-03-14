@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ApiError } from '../types/index.js';
 
 /**
- * API client for making HTTP requests to the ML.io API
+ * API client for making HTTP requests to the Maikers API
  */
 export class ApiClient {
   private client: AxiosInstance;

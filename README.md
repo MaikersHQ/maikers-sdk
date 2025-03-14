@@ -1,11 +1,10 @@
-# ML.io SDK
+# Maikers SDK
 
-A TypeScript SDK for interacting with the ML.io API.
+A TypeScript SDK for interacting with the Maikers API.
 
 ## Features
 
 - Authentication with API key
-- API key creation and management
 - AI agent creation and configuration
 - AI agent interaction (chat and actions)
 - Available as both a library and CLI tool
@@ -15,10 +14,10 @@ A TypeScript SDK for interacting with the ML.io API.
 ### Authentication
 
 ```typescript
-import { MLioSDK } from 'mlio-sdk';
+import { MaikersSDK } from 'maikers-sdk';
 
 // Initialize the SDK
-const sdk = new MLioSDK({});
+const sdk = new MaikersSDK({});
 
 // Authenticate with your API key
 await sdk.auth('your-api-key');
@@ -29,16 +28,16 @@ if (sdk.isAuthenticated()) {
 }
 
 // You can also initialize with an API key directly
-const sdk = new MLioSDK({ apiKey: 'your-api-key' });
+const sdk = new MaikersSDK({ apiKey: 'your-api-key' });
 ```
 
 ### Using as library
 
 ```typescript
-import { MLioSDK } from 'mlio-sdk';
+import { MaikersSDK } from 'maikers-sdk';
 
 // Initialize the SDK with your API key
-const sdk = new MLioSDK({ apiKey: 'your-api-key' });
+const sdk = new MaikersSDK({ apiKey: 'your-api-key' });
 ```
 
 ## Usage as a CLI

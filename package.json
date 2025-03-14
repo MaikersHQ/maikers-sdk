@@ -1,12 +1,12 @@
 {
-  "name": "mlio-sdk",
+  "name": "maikers-sdk",
   "version": "1.0.0",
-  "description": "TypeScript SDK for ML.io API",
+  "description": "TypeScript SDK for Maikers API",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
-    "mlio": "dist/cli.js"
+    "maik": "dist/cli.js"
   },
   "files": [
     "dist",

@@ -13,7 +13,7 @@ type ConfigValue = string | number | undefined;
  */
 const DEFAULT_CONFIG = {
   apiKey: '',
-  baseUrl: 'https://api.mlio.ai',
+  baseUrl: 'https://api.maikers.com',
   authTimestamp: 0, // Add timestamp field
 };
 
@@ -29,7 +29,7 @@ export class ConfigManager {
    */
   constructor() {
     // Create config directory if it doesn't exist
-    const configDir = path.join(os.homedir(), '.maikers.sdk'); // Changed from .mlio to .maikers.sdk
+    const configDir = path.join(os.homedir(), '.maikers.sdk'); // Changed from .maikers to .maikers.sdk
     if (!fs.existsSync(configDir)) {
       fs.mkdirSync(configDir, { recursive: true });
     }

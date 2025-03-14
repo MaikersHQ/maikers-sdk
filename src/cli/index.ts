@@ -4,7 +4,7 @@ import { MaikersSDK } from '../index.js';
 import { UpdateAgentSettingsParams, RiskLevel, CreateAgentParams } from '../types/index.js';
 
 /**
- * CLI for the ML.io SDK
+ * CLI for the Maikers SDK
  */
 export class CLI {
   private program: Command;
@@ -18,7 +18,7 @@ export class CLI {
     this.config = new ConfigManager();
     this.sdk = new MaikersSDK({
       apiKey: process.env.MAIKERS_API_KEY,
-      baseUrl: process.env.MAIKERS_BASE_URL || 'https://api.mlio.ai',
+      baseUrl: process.env.MAIKERS_BASE_URL || 'https://api.maikers.ai',
     });
     this.program = new Command();
 
