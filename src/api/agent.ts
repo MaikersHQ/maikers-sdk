@@ -1,5 +1,12 @@
 import { ApiClient } from './client.js';
-import { UpdateAgentSettingsParams, Job, Agent, CreateAgentParams } from '../types/index.js';
+import {
+  UpdateAgentSettingsParams,
+  Job,
+  Agent,
+  CreateAgentParams,
+  AgentQueryParams,
+  AgentQueryResponse,
+} from '../types/index.js';
 
 /**
  * Agents API for managing AI agents
@@ -42,5 +49,14 @@ export class AgentApi {
    */
   public async create(params: CreateAgentParams): Promise<Agent> {
     return this.client.post<Agent>('/agents', params);
+  }
+
+  /**
+   * Query an agent (send a message and get a response)
+   * @param params - Query parameters
+   * @returns Promise with the agent's response
+   */
+  public async query(params: AgentQueryParams): Promise<AgentQueryResponse> {
+    return this.client.post<AgentQueryResponse>(`/agents/terminal`, params);
   }
 }

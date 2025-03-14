@@ -10,8 +10,6 @@ export class MaikersSDK {
   private client: ApiClient;
   /** Configuration manager */
   private config: ConfigManager;
-  /** Key API */
-  public key: KeyApi;
   /** Agents API */
   public agent: AgentApi;
 
@@ -32,7 +30,6 @@ export class MaikersSDK {
     this.client = new ApiClient(baseUrl, apiKey);
 
     // Initialize API modules
-    this.key = new KeyApi(this.client);
     this.agent = new AgentApi(this.client);
   }
 

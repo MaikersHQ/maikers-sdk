@@ -190,11 +190,30 @@ export class CLI {
           console.error('Error creating agent:', (error as Error).message);
         }
       });
+
+    /**
+     * Set up agent commands
+     */
+    agentsCommand
+      .command('query <agentId>')
+      .description('Query an agent')
+      .requiredOption('--message <message>', 'Message to send to the agent')
+      .action(async (agentId: string, options) => {
+        const recipients = [agentId];
+        try {
+          const response = await this.sdk.agent.query({
+            message: options.message,
+            recipients,
+            stream: false,
+          });
+          console.log('Agent response:');
+          console.log(JSON.stringify(response, null, 2));
+        } catch (error) {
+          console.error('Error querying agent:', (error as Error).message);
+        }
+      });
   }
 
-  /**
-   * Set up agent commands
-   */
   public parse(args: string[]): void {
     this.program.parse(args);
   }

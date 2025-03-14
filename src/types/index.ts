@@ -133,3 +133,30 @@ export interface CreateAgentParams {
   /** Persona ID */
   personaId: string;
 }
+
+/**
+ * Agent query parameters
+ */
+export interface AgentQueryParams {
+  /** Recipients of the message */
+  recipients: string[];
+  /** Message to send to the agent */
+  message: string;
+  /** Format response as a stream */
+  stream?: boolean;
+}
+
+/**
+ * Agent query response
+ */
+export interface AgentQueryResponse {
+  results: Array<{
+    id: string;
+    result: {
+      messages: Array<{
+        content: string;
+        role: string;
+      }>;
+    };
+  }>;
+}
