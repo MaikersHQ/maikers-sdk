@@ -2,6 +2,14 @@
 
 A TypeScript SDK for interacting with the ML.io API.
 
+## Features
+
+- Authentication with API key
+- API key creation and management
+- AI agent creation and configuration
+- AI agent interaction (chat and actions)
+- Available as both a library and CLI tool
+
 ## Usage as a Library
 
 ### Authentication
@@ -24,25 +32,72 @@ if (sdk.isAuthenticated()) {
 const sdk = new MLioSDK({ apiKey: 'your-api-key' });
 ```
 
-### Using the SDK
+### Using as library
 
-````typescript
+```typescript
 import { MLioSDK } from 'mlio-sdk';
 
 // Initialize the SDK with your API key
 const sdk = new MLioSDK({ apiKey: 'your-api-key' });
+```
 
 ## Usage as a CLI
 
+### Install dependencies
+
 ```bash
-# Authenticate with your API key
-mlio auth login your-api-key
+pnpm i
+```
 
-# Check authentication status
-mlio auth status
+### Build the CLI
 
-# Log out (clear authentication)
-mlio auth logout
+```bash
+pnpm build
+```
+
+### Usage
+
+#### Authenticate with your API key
+
+```bash
+node dist/cli.js auth login your-api-key
+```
+
+#### Check authentication status
+
+```bash
+node dist/cli.js auth status
+```
+
+#### Log out (clear authentication)
+
+```bash
+node dist/cli.js auth logout
+```
+
+#### Create an agent
+
+```bash
+node dist/cli.js agent create --id <agent-id> --name "Agent Name" --description "Agent Description" --risk-level low --job-types job-type1,job-type2 --skills skill1,skill2 --persona-id <persona-id>
+```
+
+#### Update agent settings
+
+```bash
+node dist/cli.js agent update-settings <agent-id> --persona- "helpful assistant" --risks low,medium
+```
+
+#### Query an agent
+
+```bash
+node dist/cli.js agent query <agent-id> --message "Hello, how can you help me today?"
+```
+
+#### Get help
+
+```bash
+node dist/cli.js --help
+```
 
 ## Environment Variables
 
@@ -51,4 +106,4 @@ You can configure the SDK using environment variables:
 ```env
 MAIKERS_API_KEY=your-api-key
 MAIKERS_BASE_URL=api-base-url
-````
+```
