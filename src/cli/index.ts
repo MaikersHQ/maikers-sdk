@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import { ConfigManager } from '../config/index.js';
 import { MaikersSDK } from '../index.js';
-import { UpdateAgentSettingsParams, RiskLevel } from '../types/index.js';
+import { UpdateAgentSettingsParams, RiskLevel, CreateAgentParams } from '../types/index.js';
 
 /**
  * CLI for the ML.io SDK
@@ -155,6 +155,39 @@ export class CLI {
           console.log(JSON.stringify(agent, null, 2));
         } catch (error) {
           console.error('Error updating agent settings:', (error as Error).message);
+        }
+      });
+
+    agentsCommand
+      .command('create')
+      .description('Create a new AI agent')
+      .requiredOption('--id <id>', 'Unique agent ID: the NFT mint')
+      .requiredOption('--name <name>', 'Name of the agent')
+      .option('--description <description>', 'Description of the agent')
+      .requiredOption('--risk-level <riskLevel>', 'Allowed risk levels (low, medium, high)')
+      .option('--job-types <jobTypes...>', 'Job types the agent can handle, separated by a comma')
+      .option('--skills <skills...>', 'Skills the agent can handle, separated by a comma')
+      .requiredOption('--persona-id <personaId>', 'Persona ID')
+      .option('--auto-enable-new-job-types', 'Whether to automatically enable new job types')
+      .option('--auto-enable-new-skills', 'Whether to automatically enable new skills')
+      .action(async options => {
+        try {
+          const params: CreateAgentParams = {
+            id: options.id,
+            name: options.name,
+            description: options.description,
+            riskLevel: options.riskLevel as RiskLevel,
+            jobTypes: options.jobTypes.split(','),
+            skills: options.skills.split(','),
+            personaId: options.personaId,
+            autoEnableNewJobTypes: options.autoEnableNewJobTypes ? true : false,
+            autoEnableNewSkills: options.autoEnableNewSkills ? true : false,
+          };
+          const agent = await this.sdk.agent.create(params);
+          console.log('Agent created successfully:');
+          console.log(JSON.stringify(agent, null, 2));
+        } catch (error) {
+          console.error('Error creating agent:', (error as Error).message);
         }
       });
   }

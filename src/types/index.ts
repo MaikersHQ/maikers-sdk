@@ -109,3 +109,27 @@ export interface Job {
   createdAt: string;
   updatedAt: string;
 }
+
+/**
+ * Agent creation parameters
+ */
+export interface CreateAgentParams {
+  /** Unique agent ID: the NFT mint */
+  id: string;
+  /** Name of the agent */
+  name: string;
+  /** Description of the agent */
+  description: string;
+  /** Risk level of the agent */
+  riskLevel: RiskLevel;
+  /** Job types the agent can handle */
+  jobTypes: string[];
+  /** Skills the agent can handle */
+  skills: string[];
+  /** Whether to automatically enable new job types */
+  autoEnableNewJobTypes: boolean;
+  /** Whether to automatically enable new skills */
+  autoEnableNewSkills: boolean;
+  /** Persona ID */
+  personaId: string;
+}
